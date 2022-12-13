@@ -1,5 +1,5 @@
 {
-  "configs": [
+  "update_tasks": [
     {
       "name": "piped-frontend",
       "attr_path": "piped-frontend",
