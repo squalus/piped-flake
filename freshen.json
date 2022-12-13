@@ -1,0 +1,65 @@
+{
+  "configs": [
+    {
+      "name": "piped-frontend",
+      "attr_path": "piped-frontend",
+      "input_names": [
+        "piped-frontend-src"
+      ],
+      "derived_hashes": [
+        {
+          "hash_attr_path": "piped-frontend.offlineCacheUpdate",
+          "hash_file_path": "piped-frontend/offline-cache-hash.json"
+        }
+      ],
+      "tests": [{
+        "attr_path": "piped-frontend-test"
+      }]
+    },
+    {
+      "name": "piped-backend",
+      "attr_path": "piped-backend",
+      "input_names": [
+        "piped-backend-src"
+      ],
+      "derived_hashes": [
+        {
+          "hash_attr_path": "piped-backend.depsUpdate",
+          "hash_file_path": "piped-backend/deps-hash.json"
+        }
+      ],
+      "tests": [{
+        "attr_path": "piped-backend-test"
+      }]
+    },
+    {
+      "name": "piped-proxy",
+      "attr_path": "piped-proxy",
+      "input_names": [
+        "piped-proxy-src"
+      ],
+      "derived_hashes": [
+        {
+          "hash_attr_path": "piped-proxy.cargoUpdate",
+          "hash_file_path": "piped-proxy/cargo-hash.json"
+        }
+      ],
+      "tests": [{
+        "attr_path": "piped-proxy-test"
+      }]
+    },
+    {
+      "name": "piped",
+      "tests": [{
+        "attr_path": "piped-test",
+        "disable_sandbox": true
+      }],
+      "linked_attr_paths": [
+        "piped-proxy",
+        "piped-frontend",
+        "piped-backend"
+      ]
+    }
+  ]
+}
+
