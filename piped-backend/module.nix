@@ -84,9 +84,6 @@ in
     systemd.services.piped-backend = {
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStartPre = [
-          #"psql
-        ];
         ExecStart = "${cfg.package}/bin/piped-backend";
         RuntimeDirectory = [ "%N" ];
         BindReadOnlyPaths = [
@@ -95,6 +92,30 @@ in
         WorkingDirectory = [ "%t/%N" ];
         DynamicUser = true;
         User = "piped-backend";
+        ProtectSystem = "strict";
+        ProtectHome = true;
+        ProtectKernelTunables = true;
+        ProtectKernelModules = true;
+        ProtectControlGroups = true;
+        ProtectKernelLogs = true;
+        ProtectHostname = true;
+        ProtectClock = true;
+        ProtectProc = "invisible";
+        ProcSubset = "pid";
+        PrivateTmp = true;
+        PrivateUsers = true;
+        PrivateDevices = true;
+        PrivateIPC = true;
+        NoNewPrivileges = true;
+        CapabilityBoundingSet = "";
+        LockPersonality = true;
+        RestrictRealtime = true;
+        RestrictSUIDSGID = true;
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
+        RestrictNamespaces = true;
+        SystemCallArchitectures = "native";
+        SystemCallFilter = [ "@system-service" ];
+        SystemCallErrorNumber = "EPERM";
       };
     };
 
@@ -108,17 +129,6 @@ in
           "DATABASE ${cfg.dbName}" = "ALL PRIVILEGES";
         };
       };
-      # This is only needed because the unix user invidious isn't the same as
-      # the database user. This tells postgres to map one to the other.
-      identMap = ''
-        piped-backend piped-backend ${cfg.dbUser}
-      '';
-      # And this specifically enables peer authentication for only this
-      # database, which allows passwordless authentication over the postgres
-      # unix socket for the user map given above.
-      authentication = ''
-        local ${cfg.dbName} ${cfg.dbUser} peer map=piped-backend
-      '';
     };
 
     nixpkgs.config.piped = {
