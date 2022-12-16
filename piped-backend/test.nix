@@ -31,8 +31,7 @@ in
 
   testScript = ''
     machine.wait_for_unit("piped-backend")
-    machine.succeed("sleep 20")
-    machine.succeed("curl http://127.0.0.1:${builtins.toString listenPort}")
+    machine.wait_until_succeeds("curl http://127.0.0.1:${builtins.toString listenPort}", timeout=45)
   '';
 
 }

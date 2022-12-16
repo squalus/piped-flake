@@ -20,7 +20,7 @@ in
 
   testScript = ''
     machine.wait_for_unit("piped-proxy")
-    machine.succeed("curl http://${listenAddress}")
+    machine.wait_until_succeeds("curl http://${listenAddress}", timeout=45)
   '';
 
 }

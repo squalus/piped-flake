@@ -21,7 +21,7 @@ in
 
   testScript = ''
     machine.wait_for_unit("nginx")
-    machine.succeed("curl http://${listenHost}:${toString listenPort}")
+    machine.wait_until_succeeds("curl http://${listenHost}:${toString listenPort}", timeout=45)
   '';
 
 }
