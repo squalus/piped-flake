@@ -10,9 +10,7 @@ in
   name = "piped-backend-test";
   nodes.machine = {
     imports = [
-      self.nixosModules.piped-frontend
-      self.nixosModules.piped-proxy
-      self.nixosModules.piped-backend
+      self.nixosModules.default
     ];
     config = {
       services.piped-backend = {

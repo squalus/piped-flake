@@ -22,10 +22,12 @@
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
   
   {
-    nixosModules = {
-      piped-proxy = import ./piped-proxy/module.nix { inherit self; };
-      piped-backend = import ./piped-backend/module.nix { inherit self; };
-      piped-frontend = import ./piped-frontend/module.nix { inherit self; };
+    nixosModules.default = { ... }: {
+      imports = [
+        (import ./piped-backend/module.nix { inherit self; })
+        (import ./piped-frontend/module.nix { inherit self; })
+        (import ./piped-proxy/module.nix { inherit self; })
+      ];
     };
   } //
   

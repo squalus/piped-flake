@@ -6,7 +6,6 @@
 , fixup_yarn_lock
 , yarn
 , nixosTest
-, config
 , src
 , ...
 }:
@@ -28,18 +27,6 @@ stdenv.mkDerivation rec {
 
   inherit offlineCache src;
   
-  postPatch = lib.optionalString ((config.piped or null) != null) ''
-    substituteInPlace src/main.js \
-      --replace "https://pipedapi.kavin.rocks" ${config.piped.backendUrl}
-    substituteInPlace src/components/PreferencesPage.vue \
-      --replace "https://piped-instances.kavin.rocks/" ${config.piped.backendUrl}
-    substituteInPlace src/components/PlaylistPage.vue \
-      --replace "https://piped.kavin.rocks" ${config.piped.frontendUrl}
-    substituteInPlace public/opensearch.xml \
-      --replace "https://pipedapi.kavin.rocks" ${config.piped.backendUrl} \
-      --replace "https://piped.kavin.rocks" ${config.piped.frontendUrl}
-  '';
-
   nativeBuildInputs = [ nodejs yarn fixup_yarn_lock ];
   
   postConfigure = ''

@@ -11,7 +11,7 @@ in
   name = "piped-frontend-test";
   nodes.machine = {
     imports = [
-      self.nixosModules.piped-frontend
+      self.nixosModules.default
     ];
     config.services.piped-frontend = {
       enable = true;

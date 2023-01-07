@@ -10,7 +10,7 @@ in
   name = "piped-proxy-test";
   nodes.machine = {
     imports = [
-      self.nixosModules.piped-proxy
+      self.nixosModules.default
     ];
     config.services.piped-proxy = {
       enable = true;

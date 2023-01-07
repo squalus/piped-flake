@@ -17,10 +17,8 @@ in
 {
   name = "piped-integration-test";
   nodes.machine = {
-    imports = with self.nixosModules; [
-      piped-backend
-      piped-frontend
-      piped-proxy
+    imports = [
+      self.nixosModules.default
       "${pkgs.path}/nixos/tests/common/x11.nix"
     ];
     config = {

@@ -16,9 +16,7 @@ let
 
   autoProps = {
     PORT = builtins.toString cfg.listenPort;
-    PROXY_PART = "http://${config.services.piped-proxy.listenAddress}";
     API_URL = "http://127.0.0.1:${builtins.toString cfg.listenPort}";
-    FRONTEND_URL = "http://${config.services.piped-frontend.listenHost}:${toString config.services.piped-frontend.listenPort}";
     COMPROMISED_PASSWORD_CHECK = "false";
     MATRIX_SERVER = "";
     "hibernate.connection.url" = "jdbc:postgresql://${cfg.dbHost}:${builtins.toString cfg.dbPort}/${cfg.dbName}";
@@ -26,7 +24,11 @@ let
     "hibernate.dialect" = "org.hibernate.dialect.PostgreSQLDialect";
     "hibernate.connection.username" = cfg.dbUser;
     "hibernate.connection.password" = cfg.dbPassword;
-  };
+  } // (optionalAttrs config.services.piped-frontend.enable {
+    FRONTEND_URL = config.services.piped-frontend.publicFrontendUrl;
+  }) // (optionalAttrs config.services.piped-proxy.enable {
+    PROXY_PART = "http://${config.services.piped-proxy.listenAddress}";
+  });
 
   propsFile = propsFormat.generate "piped-backend-config.properties" (autoProps // cfg.properties);
 
@@ -129,11 +131,6 @@ in
           "DATABASE ${cfg.dbName}" = "ALL PRIVILEGES";
         };
       };
-    };
-
-    nixpkgs.config.piped = {
-      backendUrl = cfg.properties.API_URL;
-      frontendUrl = cfg.properties.FRONTEND_URL;
     };
 
   };
