@@ -50,12 +50,12 @@ in
 
     publicFrontendUrl = mkOption {
       type = types.str;
-      default = "http://${config.services.piped-frontend.listenHost}:${toString config.services.piped-frontend.listenPort}";
+      description = "Public URL of piped-frontend";
     };
 
     publicBackendUrl = mkOption {
       type = with types; nullOr str;
-      default = lib.optionalString config.services.piped-backend.enable "http://127.0.0.1:${builtins.toString config.services.piped-backend.listenPort}";
+      description = "Public URL of piped-backend";
     };
   };
 

@@ -15,7 +15,12 @@ in
     config = {
       services.piped-backend = {
         enable = true;
-        inherit listenPort;
+        settings = {
+          PORT = listenPort;
+          API_URL = "http://127.0.0.1:${toString listenPort}";
+          PROXY_PART = "http://127.0.0.1:14300";
+          FRONTEND_URL = "";
+        };
       };
       services.postgresql = {
         initialScript = pkgs.writeText "init-postgres-with-password" ''

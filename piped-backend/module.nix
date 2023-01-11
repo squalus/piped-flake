@@ -14,23 +14,7 @@ let
 
   propsFormat = pkgs.formats.javaProperties {};
 
-  autoProps = {
-    PORT = builtins.toString cfg.listenPort;
-    API_URL = "http://127.0.0.1:${builtins.toString cfg.listenPort}";
-    COMPROMISED_PASSWORD_CHECK = "false";
-    MATRIX_SERVER = "";
-    "hibernate.connection.url" = "jdbc:postgresql://${cfg.dbHost}:${builtins.toString cfg.dbPort}/${cfg.dbName}";
-    "hibernate.connection.driver_class" = "org.postgresql.Driver";
-    "hibernate.dialect" = "org.hibernate.dialect.PostgreSQLDialect";
-    "hibernate.connection.username" = cfg.dbUser;
-    "hibernate.connection.password" = cfg.dbPassword;
-  } // (optionalAttrs config.services.piped-frontend.enable {
-    FRONTEND_URL = config.services.piped-frontend.publicFrontendUrl;
-  }) // (optionalAttrs config.services.piped-proxy.enable {
-    PROXY_PART = "http://${config.services.piped-proxy.listenAddress}";
-  });
-
-  propsFile = propsFormat.generate "piped-backend-config.properties" (autoProps // cfg.properties);
+  propsFile = propsFormat.generate "piped-backend-config.properties" cfg.settings;
 
 in
 
@@ -39,9 +23,9 @@ in
 
     enable = mkEnableOption "Whether to enable the piped-backend service";
 
-    listenPort = mkOption {
-      type = types.int;
-      default = 14302;
+    dbUser = mkOption {
+      type = types.str;
+      default = "piped";
     };
 
     dbName = mkOption {
@@ -49,29 +33,70 @@ in
       default = "piped";
     };
 
-    dbUser = mkOption {
-      type = types.str;
-      default = "piped";
-    };
-
-    dbPassword = mkOption {
-      type = types.str;
-      default = "piped";
-    };
-
-    dbHost = mkOption {
-      type = types.nullOr types.str;
-      default = "127.0.0.1";
-    };
-
-    dbPort = mkOption {
-      type = types.int;
-      default = options.services.postgresql.port.default;
-    };
-
     # https://github.com/TeamPiped/Piped-Backend/blob/master/src/main/java/me/kavin/piped/consts/Constants.java
-    properties = mkOption {
-      inherit (propsFormat) type;
+    settings = mkOption {
+      type = types.submodule {
+        freeformType = propsFormat.type;
+        options = {
+          MATRIX_SERVER = mkOption {
+            type = types.str;
+            default = "";
+          };
+
+          COMPROMISED_PASSWORD_CHECK = mkOption {
+            type = types.str;
+            default = "false";
+          };
+
+          PORT = mkOption {
+            type = types.port;
+            default = 14302;
+            description = "Listen port";
+            apply = x: builtins.toString x;
+          };
+
+          API_URL = mkOption {
+            type = types.str;
+            default = "http://127.0.0.1:${toString options.services.piped-backend.PORT.default}";
+            description = "Public URL of piped-backend";
+          };
+
+          FRONTEND_URL = mkOption {
+            type = types.str;
+            description = "Public URL of piped-frontend";
+          };
+
+          PROXY_PART = mkOption {
+            type = types.str;
+            default = "Public URL of piped-proxy";
+          };
+
+          "hibernate.connection.driver_class" = mkOption {
+            type = types.str;
+            default = "org.postgresql.Driver";
+          };
+
+          "hibernate.connection.username" = mkOption {
+            type = types.str;
+            default = "piped";
+          };
+
+          "hibernate.connection.password" = mkOption {
+            type = types.str;
+            default = "piped";
+          };
+
+          "hibernate.connection.url" = mkOption {
+            type = types.str;
+            default = "jdbc:postgresql://127.0.0.1:${builtins.toString options.services.postgresql.port.default}/${options.services.piped-backend.dbName.default}";
+          };
+
+          "hibernate.dialect" = mkOption {
+            type = types.str;
+            default = "org.hibernate.dialect.PostgreSQLDialect";
+          };
+        };
+      };
       default = {};
     };
 
@@ -126,7 +151,7 @@ in
       enableTCPIP = true;
       ensureDatabases = lib.singleton cfg.dbName;
       ensureUsers = lib.singleton {
-        name = cfg.dbUser;
+        name = cfg.settings."hibernate.connection.username";
         ensurePermissions = {
           "DATABASE ${cfg.dbName}" = "ALL PRIVILEGES";
         };

@@ -1,10 +1,11 @@
 { self }:
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
 
   listenHost = "127.0.0.1";
   listenPort = 14301;
+  publicFrontendUrl = "http://${listenHost}:${toString listenPort}";
 
 in
 {
@@ -15,13 +16,14 @@ in
     ];
     config.services.piped-frontend = {
       enable = true;
-      inherit listenHost listenPort;
+      inherit listenHost listenPort publicFrontendUrl;
+      publicBackendUrl = "";
     };
   };
 
   testScript = ''
     machine.wait_for_unit("nginx")
-    machine.wait_until_succeeds("curl http://${listenHost}:${toString listenPort}", timeout=45)
+    machine.wait_until_succeeds("curl ${publicFrontendUrl}", timeout=45)
   '';
 
 }
