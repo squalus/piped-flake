@@ -42,13 +42,19 @@
     with pkgs;
 
     rec {
-      packages = flake-utils.lib.flattenTree {
+      packages = flake-utils.lib.flattenTree rec {
+
+        gradle_8 = let
+          gradlePackages = callPackage ./gradle_8 {};
+        in callPackage gradlePackages.gradle_8 {};
+
         piped-proxy = callPackage ./piped-proxy {
           src = inputs.piped-proxy-src;
         };
         piped-proxy-test = nixosTest (import ./piped-proxy/test.nix { inherit self; });
         piped-backend = callPackage ./piped-backend {
           src = inputs.piped-backend-src;
+          gradle = gradle_8;
         };
         piped-backend-test = nixosTest (import ./piped-backend/test.nix { inherit self; });
         piped-frontend = callPackage ./piped-frontend {

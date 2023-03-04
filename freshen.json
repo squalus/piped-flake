@@ -25,7 +25,8 @@
           "filename": "piped-backend/deps-hash.json"
       }],
       "tests": [{
-        "attr_path": "piped-backend-test"
+        "attr_path": "piped-backend-test",
+        "disable_sandbox": true
       }]
     },
     {
