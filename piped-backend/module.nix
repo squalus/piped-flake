@@ -100,6 +100,12 @@ in
       default = {};
     };
 
+    toolOptions = mkOption {
+      type = types.str;
+      description = "JVM options";
+      default = "-Xmx1G -Xaggressive -XX:+UnlockExperimentalVMOptions -XX:+OptimizeStringConcat -XX:+UseStringDeduplication -XX:+UseCompressedOops -XX:+UseNUMA -XX:+IdleTuningGcOnIdle -Xgcpolicy:gencon -Xshareclasses:allowClasspaths -Xtune:virtualized";
+    };
+
     package = mkOption {
       type = types.package;
       default = self.packages."${pkgs.stdenv.system}".piped-backend;
@@ -112,6 +118,9 @@ in
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/piped-backend";
+        Environment = [
+          "JVM_TOOL_OPTIONS=\"${cfg.toolOptions}\""
+        ];
         RuntimeDirectory = [ "%N" ];
         BindReadOnlyPaths = [
           "${propsFile}:%t/%N/config.properties"

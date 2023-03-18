@@ -3,7 +3,7 @@
   description = "Random packages";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "flake:flake-utils";
     piped-frontend-src = {
       url = "github:TeamPiped/Piped";

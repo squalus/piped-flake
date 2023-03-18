@@ -1,4 +1,4 @@
-{ src, stdenv, fetchFromGitHub, lib, gradle, perl, runtimeShell, jre_headless, nixosTest }:
+{ src, stdenv, fetchFromGitHub, lib, gradle, perl, runtimeShell, jdk19_headless, nixosTest }:
 
 let
    
@@ -104,7 +104,7 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     echo "#!${runtimeShell}" >> $out/bin/piped-backend
-    echo "${jre_headless}/bin/java -jar ${jar}" >> $out/bin/piped-backend
+    echo "${jdk19_headless}/bin/java -server --enable-preview -jar ${jar}" >> $out/bin/piped-backend
     chmod u+x $out/bin/piped-backend
   '';
 

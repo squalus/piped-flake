@@ -1,4 +1,4 @@
-{ jdk8, jdk11, jdk17 }:
+{ jdk8, jdk11, jdk17, jdk19, lib }:
 
 rec {
   gen =
@@ -127,10 +127,10 @@ rec {
   # https://docs.gradle.org/current/userguide/compatibility.html
 
   gradle_8 = gen {
-    version = "8.0.1";
+    version = "8.0.2";
     nativeVersion = "0.22-milestone-24";
-    sha256 = "02g9i1mrpdydj8d6395cv6a4ny9fw3z7sjzr7n6l6a9zx65masqv";
-    defaultJava = jdk17;
+    sha256 = "1myhb33kx0xbsw6247gxchk2pkqrzhjqpx5q1g2b5f89dylgcyzz";
+    defaultJava = jdk19;
   };
 
   gradle_7 = gen {
