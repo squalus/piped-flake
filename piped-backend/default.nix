@@ -1,17 +1,6 @@
-{ src, stdenv, fetchFromGitHub, lib, gradle, perl, runtimeShell, jdk19_headless, nixosTest, fetchurl }:
+{ src, stdenv, fetchFromGitHub, lib, gradle, perl, runtimeShell, jdk19_headless, nixosTest }:
 
 let
-
-  # unclear why these two JARs aren't downloaded by gradle. just get them manually for now.
-  fastdoubleparser-jar = fetchurl {
-    url = "https://repo.maven.apache.org/maven2/ch/randelshofer/fastdoubleparser/0.6.0/fastdoubleparser-0.6.0.jar";
-    hash = "sha256-G1h1JTaqFmDKmrDx7jnEOuDprrWbSs0Cw7YI6Bp52dM=";
-  };
-
-  okio-jar = fetchurl {
-    url = "https://repo1.maven.org/maven2/com/squareup/okio/okio/3.2.0/okio-3.2.0.jar";
-    hash = "sha256-3KkyyyAptsniZ3D4fbCLFNSB/+gTGlnzaaI4XBG+Ti0=";
-  };
    
   pname = "piped-backend";
 
@@ -64,8 +53,6 @@ HERE
       find $GRADLE_USER_HOME/caches/modules-2 -type f -regex '.*\.\(jar\|pom\)' \
         | perl -pe 's#(.*/([^/]+)/([^/]+)/([^/]+)/[0-9a-f]{30,40}/([^/\s]+))$# ($x = $2) =~ tr|\.|/|; "install -Dm444 $1 \$out/maven/$x/$3/$4/$5" #e' \
         | sh
-      cp ${fastdoubleparser-jar} $out/maven/ch/randelshofer/fastdoubleparser/0.6.0/fastdoubleparser-0.6.0.jar
-      cp ${okio-jar} $out/maven/com/squareup/okio/okio/3.2.0/okio-3.2.0.jar
     '';
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";
