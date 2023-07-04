@@ -1,20 +1,6 @@
 {
   "update_tasks": [
     {
-      "name": "piped-frontend",
-      "attr_path": "piped-frontend",
-      "inputs": [
-        "piped-frontend-src"
-      ],
-      "derived_hashes": [{
-          "attr_path": "piped-frontend.offlineCacheUpdate",
-          "filename": "piped-frontend/offline-cache-hash.json"
-      }],
-      "tests": [{
-        "attr_path": "piped-frontend-test"
-      }]
-    },
-    {
       "name": "piped-backend",
       "attr_path": "piped-backend",
       "inputs": [
@@ -51,7 +37,6 @@
       }],
       "required_update_tasks": [
         "piped-proxy",
-        "piped-frontend",
         "piped-backend"
       ]
     }

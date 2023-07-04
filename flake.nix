@@ -66,7 +66,8 @@
         package-update = mkShell {
           name = "package-update";
           nativeBuildInputs = [
-            jq 
+            nodejs
+            prefetch-npm-deps
           ];
         };
       };

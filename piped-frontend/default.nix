@@ -1,49 +1,26 @@
-{ stdenv
+{ src
 , lib
-, fetchFromGitHub
-, fetchYarnDeps
-, nodejs
-, fixup_yarn_lock
-, yarn
-, nixosTest
-, src
-, ...
+, buildNpmPackage
 }:
 
 let
 
-  offlineCacheHash = builtins.fromJSON (builtins.readFile ./offline-cache-hash.json);
-
-  offlineCache = fetchYarnDeps {
-    yarnLock = src + "/yarn.lock";
-    sha256 = offlineCacheHash;
-  };
+  npmDepsHash = builtins.fromJSON (builtins.readFile ./npmDepsHash.json);
 
 in
   
-stdenv.mkDerivation rec {
+buildNpmPackage rec {
 
-  name = "piped-frontend";
+  pname = "piped-frontend";
+  version = "0.0.1";
 
-  inherit offlineCache src;
-  
-  nativeBuildInputs = [ nodejs yarn fixup_yarn_lock ];
-  
-  postConfigure = ''
-    export HOME=$PWD/tmp
-    mkdir -p $HOME
+  inherit src npmDepsHash;
 
-    fixup_yarn_lock yarn.lock
-    yarn config --offline set yarn-offline-mirror $offlineCache
-    yarn install --offline --frozen-lockfile --ignore-platform --ignore-scripts --no-progress --non-interactive
-    patchShebangs node_modules
-
-    export PATH=$(pwd)/node_modules/.bin:$PATH
+  postPatch = ''
+    cp ${./package-lock.json} ./package-lock.json
   '';
 
-  buildPhase = ''
-    yarn --offline build
-  '';
+  npmFlags = [ "--legacy-peer-deps" ];
 
   installPhase = ''
     cp -r dist $out
@@ -53,13 +30,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/TeamPiped/piped";
     license = lib.licenses.agpl3Only;
     sourceProvenance = with lib.sourceTypes; [ fromSource ];
-  };
-
-  passthru = {
-    inherit offlineCache;
-    offlineCacheUpdate = fetchYarnDeps {
-      yarnLock = src + "/yarn.lock";
-    };
   };
 }
 
