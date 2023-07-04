@@ -53,6 +53,12 @@ HERE
       find $GRADLE_USER_HOME/caches/modules-2 -type f -regex '.*\.\(jar\|pom\)' \
         | perl -pe 's#(.*/([^/]+)/([^/]+)/([^/]+)/[0-9a-f]{30,40}/([^/\s]+))$# ($x = $2) =~ tr|\.|/|; "install -Dm444 $1 \$out/maven/$x/$3/$4/$5" #e' \
         | sh
+
+      # Fix the okio dependency that doesn't get downloaded correctly. See also: https://github.com/NixOS/nixpkgs/blob/ec322bf9e598a510995e7540f17af57ee0c8d5b9/pkgs/applications/networking/instant-messengers/signald/default.nix#L57
+      set -x
+      okio_version=$(ls $GRADLE_USER_HOME/caches/modules-2/files-*/com.squareup.okio/okio-jvm)
+      cp $GRADLE_USER_HOME/caches/modules-2/files-*/com.squareup.okio/okio-jvm/*/*/*.jar $out/maven/com/squareup/okio/okio/$okio_version/okio-$okio_version.jar
+      set +x
     '';
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";

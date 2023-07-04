@@ -44,10 +44,6 @@
     rec {
       packages = flake-utils.lib.flattenTree rec {
 
-        gradle_8 = let
-          gradlePackages = callPackage ./gradle_8 {};
-        in callPackage gradlePackages.gradle_8 {};
-
         piped-proxy = callPackage ./piped-proxy {
           src = inputs.piped-proxy-src;
         };
