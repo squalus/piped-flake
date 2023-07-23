@@ -31,7 +31,7 @@
     };
   } //
   
-  flake-utils.lib.eachSystem (with flake-utils.lib.system; [ aarch64-linux x86_64-linux ]) (system:
+  flake-utils.lib.eachDefaultSystem (system:
 
     let
 
@@ -62,14 +62,12 @@
       checks = flake-utils.lib.flattenTree {
         inherit (packages) piped-proxy-test piped-backend-test piped-frontend-test;
       };
-      devShells = {
-        package-update = mkShell {
-          name = "package-update";
-          nativeBuildInputs = [
-            nodejs
-            prefetch-npm-deps
-          ];
-        };
+      devShells.default = mkShell {
+        name = "package-update";
+        nativeBuildInputs = [
+          nodejs
+          prefetch-npm-deps
+        ];
       };
     }
   );
