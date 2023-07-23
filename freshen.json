@@ -16,6 +16,21 @@
       }]
     },
     {
+      "name": "piped-frontend",
+      "attr_path": "piped-frontend",
+      "inputs": [
+        "piped-frontend-src"
+      ],
+      "update_scripts": [{
+          "attr_path": "piped-frontend.updateScript",
+          "command": "bin/piped-frontend-update"
+      }],
+      "tests": [{
+        "attr_path": "piped-frontend-test",
+        "disable_sandbox": true
+      }]
+    },
+    {
       "name": "piped-proxy",
       "attr_path": "piped-proxy",
       "inputs": [
@@ -37,7 +52,8 @@
       }],
       "required_update_tasks": [
         "piped-proxy",
-        "piped-backend"
+        "piped-backend",
+        "piped-frontend"
       ]
     }
   ]

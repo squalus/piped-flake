@@ -1,8 +1,15 @@
-#!/usr/bin/env bash
+flakeRoot="$(pwd)"
+pkgRoot="$flakeRoot/piped-frontend"
+srcDir=$(nix eval --raw -L '.#piped-frontend.src')
 
-set -euo pipefail
+echo "srcDir=$srcDir"
 
-scriptDir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-cd "$scriptDir"
-nix develop "$scriptDir"/.. -L -c "$scriptDir/update-inner.sh"
+tempDir=$(mktemp -d)
+cd "$tempDir"
+set -x
+ln -s "$srcDir"/package.json package.json
+npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+cp package-lock.json "$pkgRoot"
+prefetch-npm-deps package-lock.json | tr -d '\n' | jq -R -s '.'> "$pkgRoot"/npmDepsHash.json
+cat "$pkgRoot"/npmDepsHash.json
 

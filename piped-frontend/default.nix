@@ -1,6 +1,9 @@
 { src
 , lib
 , buildNpmPackage
+, writeShellApplication
+, nodejs
+, prefetch-npm-deps
 }:
 
 let
@@ -25,6 +28,15 @@ buildNpmPackage rec {
   installPhase = ''
     cp -r dist $out
   '';
+
+  passthru.updateScript = writeShellApplication {
+    name = "${pname}-update";
+    runtimeInputs = [
+      nodejs
+      prefetch-npm-deps
+    ];
+    text = builtins.readFile ./update.sh;
+  };
 
   meta = {
     homepage = "https://github.com/TeamPiped/piped";
