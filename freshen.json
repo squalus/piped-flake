@@ -45,6 +45,16 @@
       }]
     },
     {
+      "name": "nixpkgs",
+      "inputs": [
+        "nixpkgs"
+      ],
+      "tests": [{
+        "attr_path": "piped-test",
+        "disable_sandbox": true
+      }]
+    },
+    {
       "name": "piped",
       "tests": [{
         "attr_path": "piped-test",
