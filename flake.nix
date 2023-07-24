@@ -4,7 +4,11 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "flake:flake-utils";
+    systems.url = "github:nix-systems/default-linux";
+    flake-utils = {
+      url = "flake:flake-utils";
+      inputs.systems.follows = "systems";
+    };
     piped-frontend-src = {
       url = "github:TeamPiped/Piped";
       flake = false;
