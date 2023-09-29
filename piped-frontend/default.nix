@@ -1,12 +1,16 @@
 { src
+, callPackage
 , lib
-, buildNpmPackage
+, fetchNpmDeps
 , writeShellApplication
 , nodejs
 , prefetch-npm-deps
 }:
 
 let
+
+
+  buildNpmPackage = callPackage ./build-npm-package.nix {};
 
   npmDepsHash = builtins.fromJSON (builtins.readFile ./npmDepsHash.json);
 
