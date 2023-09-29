@@ -116,6 +116,9 @@ in
   config = mkIf cfg.enable {
     systemd.services.piped-backend = {
       wantedBy = [ "multi-user.target" ];
+      unitConfig = {
+        StartLimitIntervalSec = 0;
+      };
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/piped-backend";
         Environment = [
@@ -152,6 +155,8 @@ in
         SystemCallArchitectures = "native";
         SystemCallFilter = [ "@system-service" ];
         SystemCallErrorNumber = "EPERM";
+        Restart = "always";
+        RestartSec = 5;
       };
     };
 
