@@ -52,9 +52,10 @@
           src = inputs.piped-proxy-src;
         };
         piped-proxy-test = nixosTest (import ./piped-proxy/test.nix { inherit self; });
-        piped-backend = callPackage ./piped-backend {
+        piped-backend = callPackage ./piped-backend rec {
           src = inputs.piped-backend-src;
-          gradle = gradle_8;
+          jdk = pkgs.jdk21_headless;
+          gradle = pkgs.gradle.override { java = jdk; };
         };
         piped-backend-test = nixosTest (import ./piped-backend/test.nix { inherit self; });
         piped-frontend = callPackage ./piped-frontend {

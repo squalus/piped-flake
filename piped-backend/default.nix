@@ -1,4 +1,4 @@
-{ src, stdenv, fetchFromGitHub, lib, gradle, perl, runtimeShell, jdk19_headless, nixosTest }:
+{ src, stdenv, fetchFromGitHub, lib, gradle, perl, runtimeShell, jdk, nixosTest, dos2unix }:
 
 let
    
@@ -71,8 +71,11 @@ HERE
 
     inherit src;
 
-    nativeBuildInputs = [ gradle ];
+    nativeBuildInputs = [ gradle dos2unix ];
 
+    prePatch = ''
+      dos2unix src/main/java/me/kavin/piped/Main.java
+    '';
     patches = [ ./0001-run-matrix-loop-conditionally.patch ];
 
     postPatch = ''
@@ -110,7 +113,7 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     echo "#!${runtimeShell}" >> $out/bin/piped-backend
-    echo "${jdk19_headless}/bin/java -server --enable-preview -jar ${jar}" >> $out/bin/piped-backend
+    echo "${jdk}/bin/java -server --enable-preview -jar ${jar}" >> $out/bin/piped-backend
     chmod u+x $out/bin/piped-backend
   '';
 
