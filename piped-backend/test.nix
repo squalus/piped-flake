@@ -27,6 +27,7 @@ in
           CREATE USER piped WITH PASSWORD 'piped';
           CREATE DATABASE piped;
           GRANT ALL PRIVILEGES ON DATABASE piped TO piped;
+          ALTER DATABASE piped OWNER TO piped;
         '';
       };
     };
