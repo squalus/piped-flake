@@ -1,4 +1,4 @@
-{ src, stdenv, fetchFromGitHub, lib, gradle, perl, runtimeShell, jdk, nixosTest, dos2unix }:
+{ src, stdenv, fetchFromGitHub, lib, gradle, perl, runtimeShell, jdk, nixosTest }:
 
 let
    
@@ -71,11 +71,8 @@ HERE
 
     inherit src;
 
-    nativeBuildInputs = [ gradle dos2unix ];
+    nativeBuildInputs = [ gradle ];
 
-    prePatch = ''
-      dos2unix src/main/java/me/kavin/piped/Main.java
-    '';
     patches = [ ./0001-run-matrix-loop-conditionally.patch ];
 
     postPatch = ''
