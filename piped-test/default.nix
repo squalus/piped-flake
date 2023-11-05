@@ -65,7 +65,9 @@ in
     machine.wait_for_unit("nginx")
     machine.wait_for_x()
     machine.succeed("sleep 10")
+    machine.wait_until_succeeds("curl ${publicBackendUrl}", timeout=300)
     machine.execute(
+
       "xterm -e '${pkgs.ungoogled-chromium}/bin/chromium --no-sandbox ${publicFrontendUrl}/watch?v=YE7VzlLtp-4' >&2 &"
     )
     machine.wait_for_window("Big Buck Bunny")

@@ -1,0 +1,29 @@
+{
+  "on": {
+    "pull_request": null,
+    "push": null
+  },
+  "jobs": {
+    "build": {
+      "name": "Build",
+      "runs-on": "ubuntu-22.04",
+      "steps": [
+        {
+          "uses": "actions/checkout@v3"
+        },
+        {
+          "name": "Install Nix",
+          "uses": "DeterminateSystems/nix-installer-action@main",
+          "with": {
+            "diagnostic-endpoint": "",
+            "extra-conf": "system-features = nixos-test benchmark big-parallel kvm\n"
+          }
+        },
+        {
+          "name": "Run `ci.sh`",
+          "run": "scripts/ci.sh"
+        }
+      ]
+    }
+  }
+}

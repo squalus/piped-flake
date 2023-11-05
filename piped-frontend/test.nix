@@ -23,7 +23,7 @@ in
 
   testScript = ''
     machine.wait_for_unit("nginx")
-    machine.wait_until_succeeds("curl ${publicFrontendUrl}", timeout=45)
+    machine.wait_until_succeeds("curl ${publicFrontendUrl}", timeout=300)
   '';
 
 }

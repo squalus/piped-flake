@@ -62,6 +62,14 @@
         };
         piped-frontend-test = nixosTest (import ./piped-frontend/test.nix { inherit self; });
         piped-test = nixosTest (import ./piped-test { inherit self; });
+        sandboxed-ci-tests = linkFarm "sandboxed-ci-tests" [
+          { name = "piped-frontend-test"; path = piped-frontend-test; }
+          { name = "piped-backend-test"; path = piped-backend-test; }
+          { name = "piped-proxy-test"; path = piped-proxy-test ;}
+        ];
+        unsandboxed-ci-tests = linkFarm "unsandboxed-ci-tests" [
+          { name = "piped-test"; path = piped-test; }
+        ];
       };
       checks = flake-utils.lib.flattenTree {
         inherit (packages) piped-proxy-test piped-backend-test piped-frontend-test;
