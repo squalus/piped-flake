@@ -48,11 +48,14 @@ in
         enable = true;
         listenAddress = proxyListenAddress;
       };
+      # piped-backend hangs if this is 1 or 2...
+      virtualisation.cores = 3;
       services.postgresql = {
         initialScript = pkgs.writeText "init-postgres-with-password" ''
           CREATE USER piped WITH PASSWORD 'piped';
           CREATE DATABASE piped;
           GRANT ALL PRIVILEGES ON DATABASE piped TO piped;
+          ALTER DATABASE piped OWNER TO piped;
         '';
       };
     };

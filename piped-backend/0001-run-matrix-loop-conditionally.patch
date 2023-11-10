@@ -1,35 +1,23 @@
-From baa92a1e48db0bd5f9ff01a8cc514a6d9efed569 Mon Sep 17 00:00:00 2001
-From: squalus <squalus@squalus.net>
-Date: Fri, 25 Nov 2022 10:52:15 -0800
-Subject: [PATCH] run matrix loop conditionally
-
----
- src/main/java/me/kavin/piped/Main.java | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
-
 diff --git a/src/main/java/me/kavin/piped/Main.java b/src/main/java/me/kavin/piped/Main.java
-index 82045a9..f0a02a4 100644
+index b80d31f..c28e3b1 100644
 --- a/src/main/java/me/kavin/piped/Main.java
 +++ b/src/main/java/me/kavin/piped/Main.java
-@@ -43,11 +43,13 @@ public class Main {
+@@ -53,11 +53,13 @@ public class Main {
+             System.exit(1);
+         }
  
-         Injector.useSpecializer();
- 
--        Multithreading.runAsync(() -> new Thread(new SyncRunner(
+-        Multithreading.runAsync(() ->  Thread.ofVirtual().start(new SyncRunner(
 -                new OkHttpClient.Builder().readTimeout(60, TimeUnit.SECONDS).build(),
 -                MATRIX_SERVER,
 -                MatrixHelper.MATRIX_TOKEN)
--        ).start());
+-        ));
 +        if (MATRIX_SERVER != null && !"".equals(MATRIX_SERVER)) {
-+            Multithreading.runAsync(() -> new Thread(new SyncRunner(
++            Multithreading.runAsync(() ->  Thread.ofVirtual().start(new SyncRunner(
 +                    new OkHttpClient.Builder().readTimeout(60, TimeUnit.SECONDS).build(),
 +                    MATRIX_SERVER,
 +                    MatrixHelper.MATRIX_TOKEN)
-+            ).start());
++            ));
 +        }
  
          new Timer().scheduleAtFixedRate(new TimerTask() {
              @Override
--- 
-2.36.2
-
