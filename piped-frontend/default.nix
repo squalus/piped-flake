@@ -5,12 +5,10 @@
 , writeShellApplication
 , nodejs
 , prefetch-npm-deps
+, buildNpmPackage
 }:
 
 let
-
-
-  buildNpmPackage = callPackage ./build-npm-package.nix {};
 
   npmDepsHash = builtins.fromJSON (builtins.readFile ./npmDepsHash.json);
 
