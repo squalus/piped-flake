@@ -54,11 +54,11 @@
     "piped-frontend-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1703758069,
-        "narHash": "sha256-i81bR5wBfx4/JoZlT+v5aWOieGEc1ZhgG7Rvxiql5Hs=",
+        "lastModified": 1703941651,
+        "narHash": "sha256-4spET1UMvjlbBHo2VnfuuMMjrzjB8YMcDZBn3R091r0=",
         "owner": "TeamPiped",
         "repo": "Piped",
-        "rev": "fe787f33b2ea6492b3b79bd3af0c134f9709a127",
+        "rev": "15b0bd14084c0712ab24d17acd2608e050920fb5",
         "type": "github"
       },
       "original": {
