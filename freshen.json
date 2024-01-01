@@ -23,7 +23,7 @@
       ],
       "update_scripts": [{
           "attr_path": "piped-frontend.updateScript",
-          "command": "bin/piped-frontend-update"
+          "executable": "bin/piped-frontend-update"
       }],
       "tests": [{
         "attr_path": "piped-frontend-test",
