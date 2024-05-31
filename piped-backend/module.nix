@@ -166,9 +166,7 @@ in
       ensureDatabases = lib.singleton cfg.dbName;
       ensureUsers = lib.singleton {
         name = cfg.settings."hibernate.connection.username";
-        ensurePermissions = {
-          "DATABASE ${cfg.dbName}" = "ALL PRIVILEGES";
-        };
+        ensureDBOwnership = cfg.dbName == cfg.settings."hibernate.connection.username";
       };
     };
 
