@@ -88,7 +88,7 @@ in
 
           "hibernate.connection.url" = mkOption {
             type = types.str;
-            default = "jdbc:postgresql://127.0.0.1:${builtins.toString options.services.postgresql.port.default}/${options.services.piped-backend.dbName.default}";
+            default = "jdbc:postgresql://127.0.0.1:5432/${options.services.piped-backend.dbName.default}";
           };
 
           "hibernate.dialect" = mkOption {
