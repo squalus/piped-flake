@@ -88,7 +88,7 @@ in
 
           "hibernate.connection.url" = mkOption {
             type = types.str;
-            default = "jdbc:postgresql://127.0.0.1:${builtins.toString options.services.postgresql.port.default}/${options.services.piped-backend.dbName.default}";
+            default = "jdbc:postgresql://127.0.0.1:5432/${options.services.piped-backend.dbName.default}";
           };
 
           "hibernate.dialect" = mkOption {
@@ -163,8 +163,8 @@ in
     services.postgresql = {
       enable = true;
       enableTCPIP = true;
-      ensureDatabases = lib.singleton cfg.dbName;
-      ensureUsers = lib.singleton {
+      ensureDatabases = singleton cfg.dbName;
+      ensureUsers = singleton {
         name = cfg.settings."hibernate.connection.username";
         ensureDBOwnership = cfg.dbName == cfg.settings."hibernate.connection.username";
       };

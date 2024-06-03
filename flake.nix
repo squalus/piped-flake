@@ -3,7 +3,7 @@
   description = "Random packages";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     systems.url = "github:nix-systems/default-linux";
     flake-utils = {
       url = "flake:flake-utils";
