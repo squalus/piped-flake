@@ -17,6 +17,7 @@ let
     dontBuild = true;
     postPatch = ''
       find ./ -type f -exec sed -i 's,https://piped.kavin.rocks,${cfg.publicFrontendUrl},g' {} \;
+      sed -i 's,https://piped.video,${cfg.publicFrontendUrl},g' opensearch.xml
     '' + (lib.optionalString (cfg.publicBackendUrl != null) ''
       find ./ -type f -exec sed -i 's,https://pipedapi.kavin.rocks,${cfg.publicBackendUrl},g' {} \;
       find ./ -type f -exec sed -i 's,https://piped-instances.kavin.rocks,${cfg.publicBackendUrl},g' {} \;
