@@ -58,6 +58,13 @@ in
       type = with types; nullOr str;
       description = "Public URL of piped-backend";
     };
+
+    filesPath = mkOption {
+      description = "Path to the frontend html root";
+      default = patched-package;
+      readOnly = true;
+    };
+
   };
 
   config = mkIf cfg.enable {
