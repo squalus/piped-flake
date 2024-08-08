@@ -1,4 +1,6 @@
-{ src, stdenv, fetchFromGitHub, lib, gradle, perl, runtimeShell, jdk, nixosTest }:
+{ src, stdenv, lib, gradle, perl, runtimeShell, jdk
+, extraPatches ? []
+}:
 
 let
    
@@ -73,7 +75,7 @@ HERE
 
     nativeBuildInputs = [ gradle ];
 
-    patches = [ ./0001-run-matrix-loop-conditionally.patch ];
+    patches = [ ./0001-run-matrix-loop-conditionally.patch ] ++ extraPatches;
 
     postPatch = ''
       localRepo="maven { url uri('${deps}/maven') }"
