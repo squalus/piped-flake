@@ -1,8 +1,8 @@
-{ src, lib, fetchFromGitHub, rustPlatform, nixosTest }:
+{ src, lib, rustPlatform }:
 
 let
 
-  cargoSha256 = builtins.fromJSON ( builtins.readFile ./cargo-hash.json);
+  cargoHash = builtins.fromJSON ( builtins.readFile ./cargo-hash.json);
 
 in
 
@@ -12,12 +12,12 @@ rustPlatform.buildRustPackage rec {
 
   version = "0.0.1";
 
-  inherit cargoSha256 src;
+  inherit cargoHash src;
 
   passthru = {
     cargoUpdate = rustPlatform.buildRustPackage {
       inherit pname version src;
-      cargoSha256 = lib.fakeSha256;
+      cargoHash = lib.fakeHash;
     };
   };
 
