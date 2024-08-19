@@ -70,11 +70,11 @@
     "piped-proxy-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1723919223,
-        "narHash": "sha256-CxHgjZepjOwF8Vwwc8K9IY4BFfgS+ThFRF9WQMZpetE=",
+        "lastModified": 1724030794,
+        "narHash": "sha256-5hw2wiXiJmpXOSGJYKvHbhwTBOhBguo3EqBCXvEG7jw=",
         "owner": "TeamPiped",
         "repo": "piped-proxy",
-        "rev": "baaef0d1cb977101bf2413856e13bcd46efeebcc",
+        "rev": "77d84a6099dc9b354100545cd6c6edcdffd12886",
         "type": "github"
       },
       "original": {
