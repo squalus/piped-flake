@@ -54,11 +54,11 @@
     "piped-frontend-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1727630270,
-        "narHash": "sha256-4Vi6YQvpTVg032etug/Jq5hIG1BP/Cw7+/unSXRnrTU=",
+        "lastModified": 1728829095,
+        "narHash": "sha256-35roXV2xlkkouXPxGfZQiVvehVbsCDfabkNLrq+/EhU=",
         "owner": "TeamPiped",
         "repo": "Piped",
-        "rev": "afe3008ac770aa36635dcc8aae4a6403480b1f51",
+        "rev": "7f347ef020e37d5a7a41fda8adff61da67c48d96",
         "type": "github"
       },
       "original": {
@@ -70,11 +70,11 @@
     "piped-proxy-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1727654912,
-        "narHash": "sha256-kKwC+baeD6NwMQoFgyMJiwCKAOhgVG6hnPbEHkV4qp0=",
+        "lastModified": 1728867602,
+        "narHash": "sha256-ChOM50sAhIw1tX/GU2edfOHiM/jo2c3uF8MdBGgzgW4=",
         "owner": "TeamPiped",
         "repo": "piped-proxy",
-        "rev": "7172ff43d3222329ba0d178c96be204b6b6359f6",
+        "rev": "2df6913fc5ecc4d0e1ad918bc2ba27a3f5733ef5",
         "type": "github"
       },
       "original": {
