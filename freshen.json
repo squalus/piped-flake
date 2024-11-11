@@ -21,9 +21,9 @@
       "inputs": [
         "piped-frontend-src"
       ],
-      "update_scripts": [{
-          "attr_path": "piped-frontend.updateScript",
-          "executable": "bin/piped-frontend-update"
+      "derived_hashes": [{
+        "attr_path": "piped-frontend.hashUpdate",
+        "filename": "piped-frontend/npmDepsHash.json"
       }],
       "tests": [{
         "attr_path": "piped-frontend-test",

@@ -1,44 +1,36 @@
 { src
-, callPackage
 , lib
-, fetchNpmDeps
-, writeShellApplication
-, nodejs
-, prefetch-npm-deps
 , buildNpmPackage
+, pnpm
 }:
 
 let
 
-  npmDepsHash = builtins.fromJSON (builtins.readFile ./npmDepsHash.json);
+  pname = "pipedfrontend";
+
+  version = "0.0.1";
+
+  doPnpmDeps = hash: pnpm.fetchDeps {
+    inherit pname version src hash;
+  };
+
+  pnpmDeps = doPnpmDeps (builtins.fromJSON (builtins.readFile ./npmDepsHash.json));
 
 in
   
-buildNpmPackage rec {
+buildNpmPackage {
 
-  pname = "piped-frontend";
-  version = "0.0.1";
+  inherit pname pnpmDeps src version;
 
-  inherit src npmDepsHash;
+  npmConfigHook = pnpm.configHook;
 
-  postPatch = ''
-    cp ${./package-lock.json} ./package-lock.json
-  '';
-
-  npmFlags = [ "--legacy-peer-deps" ];
+  npmDeps = pnpmDeps;
 
   installPhase = ''
-    cp -r dist $out
+    cp dist $out -r
   '';
 
-  passthru.updateScript = writeShellApplication {
-    name = "${pname}-update";
-    runtimeInputs = [
-      nodejs
-      prefetch-npm-deps
-    ];
-    text = builtins.readFile ./update.sh;
-  };
+  passthru.hashUpdate = doPnpmDeps "";
 
   meta = {
     homepage = "https://github.com/TeamPiped/piped";
