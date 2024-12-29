@@ -1,22 +1,17 @@
 diff --git a/src/main/java/me/kavin/piped/Main.java b/src/main/java/me/kavin/piped/Main.java
-index b80d31f..c28e3b1 100644
+index 624d5f8..dbd73aa 100644
 --- a/src/main/java/me/kavin/piped/Main.java
 +++ b/src/main/java/me/kavin/piped/Main.java
-@@ -53,11 +53,13 @@ public class Main {
+@@ -86,11 +86,13 @@ public class Main {
              System.exit(1);
          }
  
--        Multithreading.runAsync(() ->  Thread.ofVirtual().start(new SyncRunner(
--                new OkHttpClient.Builder().readTimeout(60, TimeUnit.SECONDS).build(),
--                MATRIX_SERVER,
--                MatrixHelper.MATRIX_TOKEN)
--        ));
 +        if (MATRIX_SERVER != null && !"".equals(MATRIX_SERVER)) {
-+            Multithreading.runAsync(() ->  Thread.ofVirtual().start(new SyncRunner(
-+                    new OkHttpClient.Builder().readTimeout(60, TimeUnit.SECONDS).build(),
-+                    MATRIX_SERVER,
-+                    MatrixHelper.MATRIX_TOKEN)
-+            ));
+         Multithreading.runAsync(() -> Thread.ofVirtual().start(new SyncRunner(
+                 new OkHttpClient.Builder().readTimeout(60, TimeUnit.SECONDS).build(),
+                 MATRIX_SERVER,
+                 MatrixHelper.MATRIX_TOKEN)
+         ));
 +        }
  
          new Timer().scheduleAtFixedRate(new TimerTask() {

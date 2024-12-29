@@ -6,9 +6,8 @@
       "inputs": [
         "piped-backend-src"
       ],
-      "derived_hashes": [{
-          "attr_path": "piped-backend.depsUpdate",
-          "filename": "piped-backend/deps-hash.json"
+      "update_scripts": [{
+          "attr_path": "piped-backend.jar.mitmCache.updateScript"
       }],
       "tests": [{
         "attr_path": "piped-backend-test",

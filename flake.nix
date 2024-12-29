@@ -72,6 +72,7 @@
         nativeBuildInputs = [
           nodejs
           prefetch-npm-deps
+          mitm-cache
         ];
       };
     }
