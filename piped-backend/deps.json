@@ -2,6 +2,25 @@
  "!comment": "This is a nixpkgs Gradle dependency lockfile. For more details, refer to the Gradle section in the nixpkgs manual.",
  "!version": 1,
  "https://jitpack.io/com/github": {
+  "Atemu#NewPipeExtractor/135ee8a4b0bc299c912e1ec7b2b4d7522fd58601": {
+   "jar": "sha256-f1KGELqgHBieb1LsbJt6vbe9qZuaAv/s/jX2QCzY/j8=",
+   "pom": "sha256-vEf7OBjIJrzqWYV2KYWBAndlc+f4FRb8iNs3AZQ4UnM="
+  },
+  "Atemu/NewPipeExtractor#NewPipeExtractor/135ee8a4b0bc299c912e1ec7b2b4d7522fd58601": {
+   "jar": "sha256-QJgNUgwmGucQQaCTkhOPb8jiA+4Y2D0gEpu+j5fOUog=",
+   "module": "sha256-TdzRe6PDs7srRJbaQs2UVoRHoXylcfEKa48MziR2TpA=",
+   "pom": "sha256-g2OFPP20TF2/saiqDwntMjZDqwdPvjfNyetQl56Y3I8="
+  },
+  "Atemu/NewPipeExtractor#extractor/135ee8a4b0bc299c912e1ec7b2b4d7522fd58601": {
+   "jar": "sha256-oEcJf5mD5cxiH/wjVX8Nyy7JSgLcMGRR0G6kziJPdEI=",
+   "module": "sha256-WFCOr3Ky8AnupZ1TNsI/5r9pmVJCD+6p+YiwXTe9Wsg=",
+   "pom": "sha256-/2FY/pyRRSx0j2O4jYaHiPpeJ54qvsymr2jyRWUJp30="
+  },
+  "Atemu/NewPipeExtractor#timeago-parser/135ee8a4b0bc299c912e1ec7b2b4d7522fd58601": {
+   "jar": "sha256-WzDSgb0daXoBI566qn3tDbB02DXptOVZcL0j36jGJ9c=",
+   "module": "sha256-lRCp4324zwOVD+4O3tHkadFoEL/hALR3PjNkjoOEcaQ=",
+   "pom": "sha256-E/u1MiTrlj64t/hoDstRtn8lwqzcgcYfLoGZnqDpc2Y="
+  },
   "FireMasterK#nanojson/01934924442edda6952f3bedf80ba9e969cba8bc": {
    "jar": "sha256-osDAzOhnp3h1r/pBPDhZepmRvKjvknp2zpcBDH1Abgg=",
    "pom": "sha256-qncEJwpeVzrfi/PgI1fRuzfPZcOPnUsWPmiptpGpIqo="
@@ -9,21 +28,6 @@
   "FireMasterK#nanojson/9f4af3b739cc13f3d0d9d4b758bbe2b2ae7119d7": {
    "jar": "sha256-TnyRGFVsx8jTk36RR9spf/J1HRVSU8EXCK7wM9qYE5c=",
    "pom": "sha256-qLqk1QoXus0KIkcczmbI290QF3qe4fJ69+y/qZ/bS9k="
-  },
-  "FireMasterK/NewPipeExtractor#NewPipeExtractor/e45fa4d37f809a07dd5bdf6f920adabe0077704f": {
-   "jar": "sha256-1xDxNDh8ks4pk5+pjc/AyD06kLwS3osjIcEW+Di9j1A=",
-   "module": "sha256-6DoAvNApqh9ESiZrHo17kL/YZ/UtuM6ByOaKKDp4Y+8=",
-   "pom": "sha256-dSirG7JaMmRKgYGYYnA/gYJTz5tExzzXogcxXv+HAVE="
-  },
-  "FireMasterK/NewPipeExtractor#extractor/e45fa4d37f809a07dd5bdf6f920adabe0077704f": {
-   "jar": "sha256-MTrTSgsVXj91hH6xNlx5uvxs58oryQghomLrNXmMAMQ=",
-   "module": "sha256-KtWmwa30Z1WjZdx1L2ku3M1iWAc+JCQzWiXquFpGOw8=",
-   "pom": "sha256-QpeoL1iK7sbFqZ+SANXn8yALMIyyGPMFymUPyR91tEE="
-  },
-  "FireMasterK/NewPipeExtractor#timeago-parser/e45fa4d37f809a07dd5bdf6f920adabe0077704f": {
-   "jar": "sha256-Qj0qmQrS8jHZb9QzVOfSHuw8ucpKjg8H81AWKODKrV4=",
-   "module": "sha256-VYxuqiHOTdh7xWj0MnpJa7j0XhJ/+SnipouXyGPy3TQ=",
-   "pom": "sha256-iV3xB7wToNJdhgHIsndOMel77dAbLZi6f3w4mOuB94I="
   }
  },
  "https://plugins.gradle.org/m2": {

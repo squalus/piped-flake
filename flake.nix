@@ -18,7 +18,7 @@
       flake = false;
     };
     piped-backend-src = {
-      url = "github:TeamPiped/piped-backend";
+      url = "github:Atemu/piped-backend";
       flake = false;
     };
   };
