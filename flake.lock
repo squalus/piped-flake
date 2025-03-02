@@ -38,15 +38,15 @@
     "piped-backend-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1737502903,
-        "narHash": "sha256-uNg27uft5bPwVgqjM/w1tBgNkCnRTMR/LQq8RFPILQY=",
-        "owner": "Atemu",
+        "lastModified": 1740905235,
+        "narHash": "sha256-kTl3QHH6BaTpvSwjC+zLUL0+WOKE6k3a2gj+/ibuioM=",
+        "owner": "TeamPiped",
         "repo": "piped-backend",
-        "rev": "bb7eadadc346211ad8cc2af8ecf90cab27eae4eb",
+        "rev": "df57236657ab94ee7ee8890513e5cc567d26eeec",
         "type": "github"
       },
       "original": {
-        "owner": "Atemu",
+        "owner": "TeamPiped",
         "repo": "piped-backend",
         "type": "github"
       }
