@@ -4,15 +4,19 @@ let
 
   cargoHash = builtins.fromJSON ( builtins.readFile ./cargo-hash.json);
 
-in
-
-rustPlatform.buildRustPackage rec {
-
   pname = "piped-proxy";
 
   version = "0.0.1";
 
-  inherit cargoHash src;
+in
+
+rustPlatform.buildRustPackage {
+
+  inherit pname version cargoHash src;
+
+  nativeBuildInputs = [
+    rustPlatform.bindgenHook
+  ];
 
   passthru = {
     cargoUpdate = rustPlatform.buildRustPackage {
