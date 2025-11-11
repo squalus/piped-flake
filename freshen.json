@@ -55,6 +55,9 @@
     },
     {
       "name": "piped",
+      "update_scripts": [{
+          "attr_path": "piped-frontend.passthru.fonts"
+      }],
       "tests": [{
         "attr_path": "piped-test",
         "disable_sandbox": true
