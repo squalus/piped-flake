@@ -3,7 +3,7 @@
   description = "Random packages";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     systems.url = "github:nix-systems/default-linux";
     flake-utils = {
       url = "flake:flake-utils";
@@ -51,18 +51,18 @@
         piped-proxy = callPackage ./piped-proxy {
           src = inputs.piped-proxy-src;
         };
-        piped-proxy-test = nixosTest (import ./piped-proxy/test.nix { inherit self; });
+        piped-proxy-test = testers.nixosTest (import ./piped-proxy/test.nix { inherit self; });
         piped-backend = callPackage ./piped-backend rec {
           src = inputs.piped-backend-src;
           jdk = pkgs.jdk21_headless;
           gradle = pkgs.gradle.override { java = jdk; };
         };
-        piped-backend-test = nixosTest (import ./piped-backend/test.nix { inherit self; });
+        piped-backend-test = testers.nixosTest (import ./piped-backend/test.nix { inherit self; });
         piped-frontend = callPackage ./piped-frontend {
           src = inputs.piped-frontend-src;
         };
-        piped-frontend-test = nixosTest (import ./piped-frontend/test.nix { inherit self; });
-        piped-test = nixosTest (import ./piped-test { inherit self; });
+        piped-frontend-test = testers.nixosTest (import ./piped-frontend/test.nix { inherit self; });
+        piped-test = testers.nixosTest (import ./piped-test { inherit self; });
       };
       checks = flake-utils.lib.flattenTree {
         inherit (packages) piped-proxy-test piped-backend-test piped-frontend-test;

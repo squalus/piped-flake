@@ -11,6 +11,7 @@ let
   version = "0.0.1";
 
   doPnpmDeps = hash: pnpm.fetchDeps {
+    fetcherVersion = 2;
     inherit pname version src hash;
   };
 
