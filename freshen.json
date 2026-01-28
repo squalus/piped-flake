@@ -55,10 +55,6 @@
     },
     {
       "name": "piped",
-      "tests": [{
-        "attr_path": "piped-test",
-        "disable_sandbox": true
-      }],
       "required_update_tasks": [
         "piped-proxy",
         "piped-backend",
