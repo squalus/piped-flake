@@ -16,7 +16,10 @@ let
 
     nativeBuildInputs = [ gradle ];
 
-    patches = [ ./0001-run-matrix-loop-conditionally.patch ] ++ extraPatches;
+    patches = [
+      ./0001-run-matrix-loop-conditionally.patch
+      ./extractor-version.patch
+    ] ++ extraPatches;
 
     mitmCache = gradle.fetchDeps {
       pkg = self;
