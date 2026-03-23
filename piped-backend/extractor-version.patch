@@ -1,13 +1,15 @@
 diff --git a/build.gradle b/build.gradle
-index b714bf6..f20bc69 100644
+index b714bf6..33f3872 100644
 --- a/build.gradle
 +++ b/build.gradle
-@@ -16,7 +16,7 @@ dependencies {
+@@ -16,8 +16,8 @@ dependencies {
      implementation 'it.unimi.dsi:fastutil-core:8.5.16'
      implementation 'commons-codec:commons-codec:1.19.0'
      implementation 'org.bouncycastle:bcprov-jdk18on:1.81'
 -    implementation 'com.github.FireMasterK:NewPipeExtractor:92809cedefd89ce68bc4de8763e9d5f2760f5899'
-+    implementation 'com.github.teamnewpipe:NewPipeExtractor:v0.25.1'
-     implementation 'com.github.FireMasterK:nanojson:a507525e549a836c3a8b6ab7090dca38e92942ef'
+-    implementation 'com.github.FireMasterK:nanojson:a507525e549a836c3a8b6ab7090dca38e92942ef'
++    implementation 'com.github.TeamNewPipe:NewPipeExtractor:v0.26.0'
++    implementation 'com.github.TeamNewPipe:nanojson:c7a6c1c08d16b6d5ecded34758e6415e07be2166'
      implementation 'com.fasterxml.jackson.core:jackson-core:2.19.2'
      implementation 'com.fasterxml.jackson.core:jackson-annotations:2.19.2'
+     implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.2'

@@ -2,18 +2,18 @@
  "!comment": "This is a nixpkgs Gradle dependency lockfile. For more details, refer to the Gradle section in the nixpkgs manual.",
  "!version": 1,
  "https://jitpack.io/com/github": {
-  "FireMasterK#nanojson/a507525e549a836c3a8b6ab7090dca38e92942ef": {
-   "jar": "sha256-so+slrX/f1gz8QZSMtNDQ25UPnoHBP7Zj3nKnqrYTz0=",
-   "pom": "sha256-Xo/rgHVyAwUeBS7ED45akH539ejdGsGe54yv4EDZFp0="
+  "TeamNewPipe#NewPipeExtractor/v0.26.0": {
+   "jar": "sha256-baX5vxWUJppuFQRrcFE8Q5CZ3iBQjRvBJH9pktYamgg=",
+   "module": "sha256-0IZ+aO/W7MUdgfyDmVOO/jYS2mWiMxAzPRgcNi9u9pI=",
+   "pom": "sha256-OH92EowYGWECDNMizDFOPsDiufQT2XKWaOJcfogrpmU="
+  },
+  "TeamNewPipe#nanojson/c7a6c1c08d16b6d5ecded34758e6415e07be2166": {
+   "jar": "sha256-VNIb60u8MYV0gyMI8mxa9tIZRlJnVGUrCUBQaa7Hfpg=",
+   "pom": "sha256-E34ll5y3KouVg7pI0xXzDFSXp2IrSZ8m07sNQgq3XK0="
   },
   "TeamNewPipe#nanojson/e9d656ddb49a412a5a0a5d5ef20ca7ef09549996": {
    "jar": "sha256-1JWIGjIrPHLl1DKEr9fXAhUgAoyot8a6hh4/2NkGFNU=",
    "pom": "sha256-MQ5tTcXa3D0JXViOjt0sBj683ejk1Uabgvnx+jK2R7E="
-  },
-  "teamnewpipe#NewPipeExtractor/v0.25.1": {
-   "jar": "sha256-UNmQj7umiTP3XNIuCn0MKPh7khM11ULgf8wyRrIDTbo=",
-   "module": "sha256-qQf5GEQxadjty2sjeOf7PTGLcayISMFIl7P4098la+U=",
-   "pom": "sha256-spZ7MmC4Ivxc2E/iYbPEzGYbSXDF76IJlJEzLEIMnUU="
   }
  },
  "https://plugins.gradle.org/m2": {
@@ -219,15 +219,15 @@
    "jar": "sha256-iCQVc0Z93KRP/U10qgTCu/0Rv3wX4MNCyUyd56cKfGQ=",
    "pom": "sha256-I7PQOeForYndEUaY5t1744P0osV3uId9gsc6ZRXnShc="
   },
-  "com/google/protobuf#protobuf-bom/4.33.4": {
-   "pom": "sha256-+Sj1XCWsOOH/UjG2r6SxUzEpvvSrXL4MdopDLZ+ZjYA="
+  "com/google/protobuf#protobuf-bom/4.33.5": {
+   "pom": "sha256-UcqwKNb1bG5f4enzkA/ZAu6qC9RJsMMF1likgpGbbnc="
   },
-  "com/google/protobuf#protobuf-javalite/4.33.4": {
-   "jar": "sha256-RXqfUtwTeRC59hgfENnLk/noJ0Wtbj+qOULhVcJI8us=",
-   "pom": "sha256-FIYjFd0RAKM38PT9+xINWnuN4nr5swUX6VpSWsADOcM="
+  "com/google/protobuf#protobuf-javalite/4.33.5": {
+   "jar": "sha256-7ONt3UPgUogldWZBemIl+9oIsB7NyBvh/5YngDyHsi8=",
+   "pom": "sha256-sEnB3mLh6144t1bmDIPd6zHvk4eKxE8BmlSmMYD9Hmk="
   },
-  "com/google/protobuf#protobuf-parent/4.33.4": {
-   "pom": "sha256-aO0Cc35BphpTIhfIWJslM0E6A6FgKakh5YbkSFK/YvQ="
+  "com/google/protobuf#protobuf-parent/4.33.5": {
+   "pom": "sha256-li3/eLIit5Hu6zPGdIWzqRosCNKUXgWbzRa/M5tsbd8="
   },
   "com/opencsv#opencsv/5.11.2": {
    "jar": "sha256-aQ2q2QFPI6/Tq28bDEWl4Lc4rDeo0ugQ4ZYZOqtSEkU=",
@@ -423,10 +423,6 @@
   "it/unimi/dsi#fastutil-core/8.5.16": {
    "jar": "sha256-7Hxa25T6pilLtbGuvd9RkmBm/XgbkZtID2jVW1x7r6E=",
    "pom": "sha256-E3E3FKolKxAwiJVlkjbiknlz1htFCBNdCpDF/4VzaHc="
-  },
-  "it/unimi/dsi#fastutil/8.5.16": {
-   "jar": "sha256-MXocJiUtosb1yzJFTimV9rk5QPCcZkKWmjMMa5/2c0I=",
-   "pom": "sha256-ZtT76nqIlEDB/K4Ph07h1csFBADSZb9pzwA+3BiQMHI="
   },
   "jakarta/activation#jakarta.activation-api/2.1.0": {
    "pom": "sha256-hw0qdcyS4K7Dfo0WNxBVLTVDGJ6B6cqQCaMl33YMKwY="
