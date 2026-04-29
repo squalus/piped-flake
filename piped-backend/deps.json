@@ -2,10 +2,10 @@
  "!comment": "This is a nixpkgs Gradle dependency lockfile. For more details, refer to the Gradle section in the nixpkgs manual.",
  "!version": 1,
  "https://jitpack.io/com/github": {
-  "TeamNewPipe#NewPipeExtractor/v0.26.0": {
-   "jar": "sha256-baX5vxWUJppuFQRrcFE8Q5CZ3iBQjRvBJH9pktYamgg=",
-   "module": "sha256-0IZ+aO/W7MUdgfyDmVOO/jYS2mWiMxAzPRgcNi9u9pI=",
-   "pom": "sha256-OH92EowYGWECDNMizDFOPsDiufQT2XKWaOJcfogrpmU="
+  "TeamNewPipe#NewPipeExtractor/v0.26.1": {
+   "jar": "sha256-+k0IwdIkyumlJNnQnmvO+D4bS0g5ey6FKEMDb3SuZSU=",
+   "module": "sha256-Su7NDBkNIBF7TfARSCwfHcfmGD9AmoA/7LOEU3uhAQg=",
+   "pom": "sha256-Z4x8VshcxZyjQAwlwWgQwHuP/GThSdUvBxVwd8vGFQM="
   },
   "TeamNewPipe#nanojson/c7a6c1c08d16b6d5ecded34758e6415e07be2166": {
    "jar": "sha256-VNIb60u8MYV0gyMI8mxa9tIZRlJnVGUrCUBQaa7Hfpg=",
@@ -219,15 +219,15 @@
    "jar": "sha256-iCQVc0Z93KRP/U10qgTCu/0Rv3wX4MNCyUyd56cKfGQ=",
    "pom": "sha256-I7PQOeForYndEUaY5t1744P0osV3uId9gsc6ZRXnShc="
   },
-  "com/google/protobuf#protobuf-bom/4.33.5": {
-   "pom": "sha256-UcqwKNb1bG5f4enzkA/ZAu6qC9RJsMMF1likgpGbbnc="
+  "com/google/protobuf#protobuf-bom/4.34.1": {
+   "pom": "sha256-VDLNrdXSFwHQuJ2TtY9MT3Y4saFOgcCCKjTuzYRspzk="
   },
-  "com/google/protobuf#protobuf-javalite/4.33.5": {
-   "jar": "sha256-7ONt3UPgUogldWZBemIl+9oIsB7NyBvh/5YngDyHsi8=",
-   "pom": "sha256-sEnB3mLh6144t1bmDIPd6zHvk4eKxE8BmlSmMYD9Hmk="
+  "com/google/protobuf#protobuf-javalite/4.34.1": {
+   "jar": "sha256-z7wgJT/Yw2W3S9Y/j5C5DvkgBbZhnOYpw+7zmwr+8Zc=",
+   "pom": "sha256-op8gGdlWANJUiBEOFCH9o7+SV5H0ZYLVcIr5P/kx5fQ="
   },
-  "com/google/protobuf#protobuf-parent/4.33.5": {
-   "pom": "sha256-li3/eLIit5Hu6zPGdIWzqRosCNKUXgWbzRa/M5tsbd8="
+  "com/google/protobuf#protobuf-parent/4.34.1": {
+   "pom": "sha256-f1DgrPUsF0kcTTNK45VWColDG33pAs8osyxNTAOEiZk="
   },
   "com/opencsv#opencsv/5.11.2": {
    "jar": "sha256-aQ2q2QFPI6/Tq28bDEWl4Lc4rDeo0ugQ4ZYZOqtSEkU=",
