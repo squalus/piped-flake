@@ -55,6 +55,9 @@
     },
     {
       "name": "piped",
+      "update_scripts": [{
+          "attr_path": "piped-frontend.passthru.fonts"
+      }],
       "required_update_tasks": [
         "piped-proxy",
         "piped-backend",
